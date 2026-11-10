@@ -73,8 +73,8 @@ function SpaceDetail() {
           Power:
           {" "}
           {space.power
-            ? "Available"
-            : "Not Available"}
+            ? "✅Available"
+            : "❌Not Available"}
         </p>
 
       </div>
