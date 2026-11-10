@@ -8,7 +8,9 @@ export const spaces = [
     occupancy: 45,
     availableSeats: 22,
     power: true,
-    environment: "Quiet"
+    environment: "Quiet",
+    markerTop: "15%",
+    markerLeft: "18%"
   },
 
   {
@@ -19,7 +21,9 @@ export const spaces = [
     occupancy: 55,
     availableSeats: 18,
     power: true,
-    environment: "Quiet"
+    environment: "Quiet",
+    markerTop: "72%",
+    markerLeft: "10%"
   },
 
   {
@@ -30,7 +34,9 @@ export const spaces = [
     occupancy: 72,
     availableSeats: 8,
     power: false,
-    environment: "Quiet"
+    environment: "Quiet",
+    markerTop: "81%",
+    markerLeft: "28%"
   },
 
   {
@@ -41,7 +47,9 @@ export const spaces = [
     occupancy: 40,
     availableSeats: 16,
     power: true,
-    environment: "Focused"
+    environment: "Focused",
+    markerTop: "60%",
+    markerLeft: "73%"
   },
 
   {
@@ -52,7 +60,9 @@ export const spaces = [
     occupancy: 88,
     availableSeats: 3,
     power: true,
-    environment: "Quiet"
+    environment: "Quiet",
+    markerTop: "43%",
+    markerLeft: "86%"
   },
 
   {
@@ -63,7 +73,9 @@ export const spaces = [
     occupancy: 60,
     availableSeats: 15,
     power: true,
-    environment: "Technology"
+    environment: "Technology",
+    markerTop: "91%",
+    markerLeft: "90%"
   },
 
   {
@@ -74,7 +86,9 @@ export const spaces = [
     occupancy: 75,
     availableSeats: 6,
     power: true,
-    environment: "Collaborative"
+    environment: "Collaborative",
+    markerTop: "60%",
+    markerLeft: "55%"
   },
 
   {
@@ -85,7 +99,9 @@ export const spaces = [
     occupancy: 52,
     availableSeats: 12,
     power: true,
-    environment: "Collaborative"
+    environment: "Collaborative",
+    markerTop: "79%",
+    markerLeft: "58%"
   },
 
   {
@@ -96,7 +112,9 @@ export const spaces = [
     occupancy: 35,
     availableSeats: 12,
     power: false,
-    environment: "Casual"
+    environment: "Casual",
+    markerTop: "42%",
+    markerLeft: "67%"
   },
 
   {
@@ -107,7 +125,9 @@ export const spaces = [
     occupancy: 25,
     availableSeats: 20,
     power: true,
-    environment: "Casual"
+    environment: "Casual",
+    markerTop: "21%",
+    markerLeft: "80%"
   }
 
 ];
