@@ -4,10 +4,14 @@ import Home from "./pages/Home";
 import Availability from "./pages/Availability";
 import Results from "./pages/Results";
 import SpaceDetail from "./pages/SpaceDetail";
+import OccupancySimulator from "./pages/OccupancySimulator";
 
 function App() {
+
   return (
+
     <BrowserRouter>
+
       <Routes>
 
         <Route
@@ -30,9 +34,17 @@ function App() {
           element={<SpaceDetail />}
         />
 
+        <Route
+          path="/simulator"
+          element={<OccupancySimulator />}
+        />
+
       </Routes>
+
     </BrowserRouter>
+
   );
+
 }
 
 export default App;
