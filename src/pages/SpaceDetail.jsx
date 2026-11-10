@@ -64,6 +64,23 @@ function SpaceDetail() {
 
       <div className="border rounded-2xl p-5">
 
+        <div className="flex items-center gap-3 mb-4">
+
+          <span
+            className={`
+              ${status.bg}
+              text-white
+              px-3
+              py-1
+              rounded-full
+              text-sm
+            `}
+          >
+            {status.label}
+          </span>
+
+        </div>
+
         <p>
           Floor: {space.floor}
         </p>
@@ -110,77 +127,23 @@ function SpaceDetail() {
             className="rounded-xl w-full"
           />
 
-          {
-            space.id === 1 && (
-              <div
-                className={`
-                  absolute
-                  top-[35%]
-                  left-[45%]
-                  w-6
-                  h-6
-                  ${status.bg}
-                  rounded-full
-                  border-2
-                  border-white
-                `}
-              />
-            )
-          }
-
-          {
-            space.id === 2 && (
-              <div
-                className={`
-                  absolute
-                  top-[30%]
-                  left-[68%]
-                  w-6
-                  h-6
-                  ${status.bg}
-                  rounded-full
-                  border-2
-                  border-white
-                `}
-              />
-            )
-          }
-
-          {
-            space.id === 3 && (
-              <div
-                className={`
-                  absolute
-                  top-[55%]
-                  left-[25%]
-                  w-6
-                  h-6
-                  ${status.bg}
-                  rounded-full
-                  border-2
-                  border-white
-                `}
-              />
-            )
-          }
-
-          {
-            space.id === 4 && (
-              <div
-                className={`
-                  absolute
-                  top-[78%]
-                  left-[85%]
-                  w-6
-                  h-6
-                  ${status.bg}
-                  rounded-full
-                  border-2
-                  border-white
-                `}
-              />
-            )
-          }
+          <div
+            className={`
+              absolute
+              w-6
+              h-6
+              ${status.bg}
+              rounded-full
+              border-2
+              border-white
+              shadow-lg
+            `}
+            style={{
+              top: space.markerTop,
+              left: space.markerLeft
+            }}
+            title={space.zone}
+          />
 
         </div>
 
