@@ -14,35 +14,74 @@ function Home() {
         </h1>
 
         <p className="text-center text-gray-600 mb-10">
-          Find suitable library spaces before travelling.
+          View space availability, discover suitable study
+          areas, and locate powered spaces before travelling.
         </p>
 
         <div className="grid md:grid-cols-2 gap-4">
 
           <button
-            className="bg-blue-600 text-white p-6 rounded-2xl"
-            onClick={() => navigate("/results")}
+            className="
+              bg-blue-600
+              text-white
+              p-6
+              rounded-2xl
+              hover:bg-blue-700
+            "
+            onClick={() =>
+              navigate(
+                "/results?type=Individual%20Study"
+              )
+            }
           >
             Individual Study
           </button>
 
           <button
-            className="bg-green-600 text-white p-6 rounded-2xl"
-            onClick={() => navigate("/results")}
+            className="
+              bg-green-600
+              text-white
+              p-6
+              rounded-2xl
+              hover:bg-green-700
+            "
+            onClick={() =>
+              navigate(
+                "/results?type=Group%20Discussion"
+              )
+            }
           >
             Group Discussion
           </button>
 
           <button
-            className="bg-purple-600 text-white p-6 rounded-2xl"
-            onClick={() => navigate("/results")}
+            className="
+              bg-purple-600
+              text-white
+              p-6
+              rounded-2xl
+              hover:bg-purple-700
+            "
+            onClick={() =>
+              navigate(
+                "/results?type=Relaxation"
+              )
+            }
           >
             Relaxation
           </button>
 
           <button
-            className="bg-orange-600 text-white p-6 rounded-2xl"
-            onClick={() => navigate("/availability")}
+            className="
+              bg-orange-600
+              text-white
+              p-6
+              rounded-2xl
+              hover:bg-orange-700
+            "
+            onClick={() =>
+              navigate("/availability")
+            }
           >
             Browse All Spaces
           </button>
