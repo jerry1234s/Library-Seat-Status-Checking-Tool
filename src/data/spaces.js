@@ -22,7 +22,7 @@ export const spaces = [
     availableSeats: 18,
     power: false,
     environment: "Quiet",
-    markerTop: "70%",
+    markerTop: "68%",
     markerLeft: "26%"
   },
 
@@ -36,7 +36,7 @@ export const spaces = [
     power: false,
     environment: "Quiet",
     markerTop: "76%",
-    markerLeft: "35%"
+    markerLeft: "37%"
   },
 
   {
@@ -74,8 +74,8 @@ export const spaces = [
     availableSeats: 15,
     power: true,
     environment: "Technology",
-    markerTop: "85%",
-    markerLeft: "85%"
+    markerTop: "84%",
+    markerLeft: "84%"
   },
 
   {
@@ -100,7 +100,7 @@ export const spaces = [
     availableSeats: 12,
     power: true,
     environment: "Collaborative",
-    markerTop: "60%",
+    markerTop: "62%",
     markerLeft: "50%"
   },
 
