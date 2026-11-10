@@ -1,46 +1,9 @@
 import { useNavigate } from "react-router-dom";
-//feature 1
+import { spaces } from "../data/spaces";
+
 function Availability() {
 
   const navigate = useNavigate();
-
-  const zones = [
-    {
-      id: 1,
-      name: "Silent Study Zone",
-      floor: "3F",
-      occupancy: 45,
-      availableSeats: 22,
-      power: true
-    },
-
-    {
-      id: 2,
-      name: "Group Discussion Area",
-      floor: "3F",
-      occupancy: 82,
-      availableSeats: 5,
-      power: true
-    },
-
-    {
-      id: 3,
-      name: "East Lounge",
-      floor: "3F",
-      occupancy: 30,
-      availableSeats: 12,
-      power: false
-    },
-
-    {
-      id: 4,
-      name: "Computer Area",
-      floor: "2F",
-      occupancy: 65,
-      availableSeats: 15,
-      power: true
-    }
-  ];
 
   const getStatus = (occupancy) => {
 
@@ -76,15 +39,15 @@ function Availability() {
         </h1>
 
         <p className="mt-2">
-          Check space availability before
-          travelling to the library.
+          Check space availability before travelling
+          to the library.
         </p>
 
       </div>
 
       <div className="max-w-6xl mx-auto p-6">
 
-        {/* Quick Summary */}
+        {/* Current Space Status */}
 
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
@@ -94,61 +57,67 @@ function Availability() {
 
           <div className="grid md:grid-cols-2 gap-4">
 
-            {
-              zones.map((zone) => {
+            {spaces.map((space) => {
 
-                const status =
-                  getStatus(zone.occupancy);
+              const status =
+                getStatus(space.occupancy);
 
-                return (
+              return (
 
-                  <div
-                    key={zone.id}
-                    className="border rounded-xl p-4"
-                  >
+                <div
+                  key={space.id}
+                  className="border rounded-xl p-4"
+                >
 
-                    <div className="flex justify-between">
+                  <div className="flex justify-between">
 
-                      <h3 className="font-semibold">
-                        {zone.name}
-                      </h3>
+                    <h3 className="font-semibold">
+                      {space.zone}
+                    </h3>
 
-                      <span
-                        className={`
-                          ${status.bg}
-                          text-white
-                          text-xs
-                          px-2
-                          py-1
-                          rounded-full
-                        `}
-                      >
-                        {status.label}
-                      </span>
-
-                    </div>
-
-                    <p className="mt-2">
-                      Floor: {zone.floor}
-                    </p>
-
-                    <p>
-                      Available Seats:
-                      {" "}
-                      {zone.availableSeats}
-                    </p>
-
-                    <p>
-                      Occupancy:
-                      {" "}
-                      {zone.occupancy}%
-                    </p>
+                    <span
+                      className={`
+                        ${status.bg}
+                        text-white
+                        text-xs
+                        px-2
+                        py-1
+                        rounded-full
+                      `}
+                    >
+                      {status.label}
+                    </span>
 
                   </div>
 
-                );
-              })
-            }
+                  <p className="mt-2">
+                    Floor: {space.floor}
+                  </p>
+
+                  <p>
+                    Available Seats:
+                    {" "}
+                    {space.availableSeats}
+                  </p>
+
+                  <p>
+                    Occupancy:
+                    {" "}
+                    {space.occupancy}%
+                  </p>
+
+                  <p>
+                    Power:
+                    {" "}
+                    {space.power
+                      ? "✅ Available"
+                      : "❌ Not Available"}
+                  </p>
+
+                </div>
+
+              );
+            })}
 
           </div>
 
@@ -175,7 +144,7 @@ function Availability() {
               className="rounded-xl w-full"
             />
 
-            {/* Demo Overlay Markers */}
+            {/* Marker 1 */}
 
             <button
               className="
@@ -190,7 +159,10 @@ function Availability() {
                 border-white
               "
               onClick={() => navigate("/space/1")}
+              title="Silent Study Zone"
             />
+
+            {/* Marker 2 */}
 
             <button
               className="
@@ -205,7 +177,10 @@ function Availability() {
                 border-white
               "
               onClick={() => navigate("/space/2")}
+              title="Group Discussion Area"
             />
+
+            {/* Marker 3 */}
 
             <button
               className="
@@ -220,7 +195,10 @@ function Availability() {
                 border-white
               "
               onClick={() => navigate("/space/3")}
+              title="East Lounge"
             />
+
+            {/* Marker 4 */}
 
             <button
               className="
@@ -235,6 +213,7 @@ function Availability() {
                 border-white
               "
               onClick={() => navigate("/space/4")}
+              title="Computer Area"
             />
 
           </div>
@@ -293,7 +272,6 @@ function Availability() {
             onClick={() => navigate("/results")}
             className="
               bg-blue-600
-              hover:bg-blue-700
               text-white
               rounded-xl
               p-4
@@ -304,10 +282,9 @@ function Availability() {
           </button>
 
           <button
-            onClick={() => navigate("/results?power=true")}
+            onClick={() => navigate("/results")}
             className="
               bg-green-600
-              hover:bg-green-700
               text-white
               rounded-xl
               p-4
