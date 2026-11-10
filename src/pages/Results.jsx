@@ -12,11 +12,14 @@ function Results() {
   const initialType =
     searchParams.get("type") || "";
 
+  const initialPower =
+    searchParams.get("power") === "true";
+
   const [selectedType, setSelectedType] =
     useState(initialType);
 
   const [powerOnly, setPowerOnly] =
-    useState(false);
+    useState(initialPower);
 
   const filteredSpaces = spaces.filter(
     (space) => {
@@ -46,9 +49,49 @@ function Results() {
         </h1>
 
         <p className="text-gray-600 mb-6">
-          Discover study spaces that match your
-          purpose and requirements.
+          Discover study spaces that match
+          your purpose and requirements.
         </p>
+
+        {
+          selectedType && (
+
+            <div
+              className="
+                mb-4
+                bg-blue-100
+                text-blue-800
+                px-4
+                py-2
+                rounded-xl
+              "
+            >
+              Showing:
+              {" "}
+              {selectedType}
+            </div>
+
+          )
+        }
+
+        {
+          powerOnly && (
+
+            <div
+              className="
+                mb-4
+                bg-green-100
+                text-green-800
+                px-4
+                py-2
+                rounded-xl
+              "
+            >
+              Power Outlet Filter Active
+            </div>
+
+          )
+        }
 
         <FilterBar
           selectedType={selectedType}
