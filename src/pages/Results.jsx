@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import {
+  useSearchParams,
+  useNavigate
+} from "react-router-dom";
 
 import { spaces } from "../data/spaces";
 import FilterBar from "../components/FilterBar";
 import SpaceCard from "../components/SpaceCard";
 
 function Results() {
+
+  const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
 
@@ -40,9 +45,28 @@ function Results() {
   );
 
   return (
+
     <div className="min-h-screen bg-gray-100 p-6">
 
       <div className="max-w-5xl mx-auto">
+
+        <div className="mb-6">
+
+          <button
+            onClick={() => navigate("/")}
+            className="
+              px-4
+              py-2
+              bg-gray-700
+              text-white
+              rounded-lg
+              hover:bg-gray-800
+            "
+          >
+            Home
+          </button>
+
+        </div>
 
         <h1 className="text-3xl font-bold mb-2">
           Find Library Spaces
@@ -66,9 +90,7 @@ function Results() {
                 rounded-xl
               "
             >
-              Showing:
-              {" "}
-              {selectedType}
+              Showing: {selectedType}
             </div>
 
           )
@@ -137,6 +159,7 @@ function Results() {
       </div>
 
     </div>
+
   );
 }
 
