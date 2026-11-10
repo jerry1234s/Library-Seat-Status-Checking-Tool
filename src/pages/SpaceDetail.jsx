@@ -28,6 +28,13 @@ function SpaceDetail() {
       >
         ← Back to Results
       </Link>
+      
+      <Link
+        to="/availability"
+        className="inline-block mb-4 ml-4 text-blue-600"
+      >
+        ← Back To Availability Overview
+      </Link>
 
       <h1 className="text-3xl font-bold mb-6">
         {space.zone}
