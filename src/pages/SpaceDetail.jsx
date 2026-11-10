@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { spaces } from "../data/spaces";
+import { getSpaces } from "../utils/storageUtils";
 import {
   getStatus,
   getOccupancyPercentage
@@ -8,6 +8,7 @@ import {
 function SpaceDetail() {
 
   const { id } = useParams();
+  const spaces = getSpaces();
 
   const space =
     spaces.find(
