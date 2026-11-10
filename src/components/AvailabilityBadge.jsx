@@ -1,9 +1,15 @@
 import { getStatus } from "../utils/statusUtils";
 
-function AvailabilityBadge({ occupancy }) {
+function AvailabilityBadge({
+  totalSeats,
+  availableSeats
+}) {
 
   const status =
-    getStatus(occupancy);
+    getStatus(
+      totalSeats,
+      availableSeats
+    );
 
   return (
 
