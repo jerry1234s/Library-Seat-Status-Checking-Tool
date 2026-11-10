@@ -22,19 +22,37 @@ function SpaceDetail() {
 
     <div className="p-6">
 
-      <Link
-        to="/results"
-        className="inline-block mb-4 text-blue-600"
-      >
-        ← Back to Results
-      </Link>
-      
-      <Link
-        to="/availability"
-        className="inline-block mb-4 ml-4 text-blue-600"
-      >
-        ← Back To Availability Overview
-      </Link>
+      <div className="flex gap-3 mb-6">
+
+        <Link
+          to="/results"
+          className="
+            px-4
+            py-2
+            bg-blue-600
+            text-white
+            rounded-lg
+            hover:bg-blue-700
+          "
+        >
+          Back to Results
+        </Link>
+
+        <Link
+          to="/availability"
+          className="
+            px-4
+            py-2
+            bg-green-600
+            text-white
+            rounded-lg
+            hover:bg-green-700
+          "
+        >
+          Availability Overview
+        </Link>
+
+      </div>
 
       <h1 className="text-3xl font-bold mb-6">
         {space.zone}
