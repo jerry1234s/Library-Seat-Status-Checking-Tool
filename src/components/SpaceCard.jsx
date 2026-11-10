@@ -1,11 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import AvailabilityBadge from "./AvailabilityBadge";
+import { getOccupancyPercentage } from "../utils/statusUtils";
 
 function SpaceCard({ space }) {
 
   const navigate = useNavigate();
 
+  const occupancy =
+    getOccupancyPercentage(
+      space.totalSeats,
+      space.availableSeats
+    );
+
   return (
+
     <div className="border rounded-2xl p-4 shadow-sm">
 
       <div className="flex justify-between items-center">
@@ -15,7 +23,8 @@ function SpaceCard({ space }) {
         </h2>
 
         <AvailabilityBadge
-          occupancy={space.occupancy}
+          totalSeats={space.totalSeats}
+          availableSeats={space.availableSeats}
         />
 
       </div>
@@ -29,24 +38,45 @@ function SpaceCard({ space }) {
       </p>
 
       <p>
+        Occupancy: {occupancy}%
+      </p>
+
+      <p>
         Available Seats: {space.availableSeats}
+        {" / "}
+        {space.totalSeats}
       </p>
 
       <p>
         Power:
         {" "}
-        {space.power ? "Available" : "Not Available"}
+        {
+          space.power
+            ? "Available"
+            : "Not Available"
+        }
       </p>
 
       <button
-        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-xl"
-        onClick={() => navigate(`/space/${space.id}`)}
+        className="
+          mt-4
+          bg-blue-600
+          text-white
+          px-4
+          py-2
+          rounded-xl
+        "
+        onClick={() =>
+          navigate(`/space/${space.id}`)
+        }
       >
         View Details
       </button>
 
     </div>
+
   );
+
 }
 
 export default SpaceCard;
