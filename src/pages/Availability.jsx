@@ -43,6 +43,8 @@ function Availability() {
 
         </div>
 
+        {/* Current Space Status */}
+
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
           <h2 className="text-xl font-bold mb-4">
@@ -51,69 +53,74 @@ function Availability() {
 
           <div className="grid md:grid-cols-2 gap-4">
 
-            {spaces.map((space) => {
+            {
+              spaces.map((space) => {
 
-              const status =
-                getStatus(space.occupancy);
+                const status =
+                  getStatus(space.occupancy);
 
-              return (
+                return (
 
-                <div
-                  key={space.id}
-                  className="border rounded-xl p-4"
-                >
+                  <div
+                    key={space.id}
+                    className="border rounded-xl p-4"
+                  >
 
-                  <div className="flex justify-between">
+                    <div className="flex justify-between">
 
-                    <h3 className="font-semibold">
-                      {space.zone}
-                    </h3>
+                      <h3 className="font-semibold">
+                        {space.zone}
+                      </h3>
 
-                    <span
-                      className={`
-                        ${status.bg}
-                        text-white
-                        text-xs
-                        px-2
-                        py-1
-                        rounded-full
-                      `}
-                    >
-                      {status.label}
-                    </span>
+                      <span
+                        className={`
+                          ${status.bg}
+                          text-white
+                          text-xs
+                          px-2
+                          py-1
+                          rounded-full
+                        `}
+                      >
+                        {status.label}
+                      </span>
+
+                    </div>
+
+                    <p className="mt-2">
+                      Floor: {space.floor}
+                    </p>
+
+                    <p>
+                      Available Seats: {space.availableSeats}
+                    </p>
+
+                    <p>
+                      Occupancy: {space.occupancy}%
+                    </p>
+
+                    <p>
+                      Power:
+                      {" "}
+                      {
+                        space.power
+                          ? "✅ Available"
+                          : "❌ Not Available"
+                      }
+                    </p>
 
                   </div>
 
-                  <p className="mt-2">
-                    Floor: {space.floor}
-                  </p>
+                );
 
-                  <p>
-                    Available Seats: {space.availableSeats}
-                  </p>
-
-                  <p>
-                    Occupancy: {space.occupancy}%
-                  </p>
-
-                  <p>
-                    Power:
-                    {" "}
-                    {
-                      space.power
-                        ? "✅ Available"
-                        : "❌ Not Available"
-                    }
-                  </p>
-
-                </div>
-
-              );
-            })}
+              })
+            }
 
           </div>
 
         </div>
+
+        {/* Interactive Map */}
 
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
@@ -134,73 +141,41 @@ function Availability() {
               className="rounded-xl w-full"
             />
 
-            <button
-              className={`
-                absolute
-                top-[35%]
-                left-[45%]
-                w-6
-                h-6
-                ${getStatus(spaces[0].occupancy).bg}
-                rounded-full
-                border-2
-                border-white
-              `}
-              onClick={() => navigate("/space/1")}
-              title={spaces[0].zone}
-            />
+            {
+              spaces.map((space) => (
 
-            <button
-              className={`
-                absolute
-                top-[30%]
-                left-[68%]
-                w-6
-                h-6
-                ${getStatus(spaces[1].occupancy).bg}
-                rounded-full
-                border-2
-                border-white
-              `}
-              onClick={() => navigate("/space/2")}
-              title={spaces[1].zone}
-            />
+                <button
+                  key={space.id}
+                  className={`
+                    absolute
+                    w-6
+                    h-6
+                    ${getStatus(space.occupancy).bg}
+                    rounded-full
+                    border-2
+                    border-white
+                    shadow
+                    hover:scale-110
+                    transition
+                  `}
+                  style={{
+                    top: space.markerTop,
+                    left: space.markerLeft
+                  }}
+                  onClick={() =>
+                    navigate(`/space/${space.id}`)
+                  }
+                  title={space.zone}
+                />
 
-            <button
-              className={`
-                absolute
-                top-[55%]
-                left-[25%]
-                w-6
-                h-6
-                ${getStatus(spaces[2].occupancy).bg}
-                rounded-full
-                border-2
-                border-white
-              `}
-              onClick={() => navigate("/space/3")}
-              title={spaces[2].zone}
-            />
-
-            <button
-              className={`
-                absolute
-                top-[78%]
-                left-[85%]
-                w-6
-                h-6
-                ${getStatus(spaces[3].occupancy).bg}
-                rounded-full
-                border-2
-                border-white
-              `}
-              onClick={() => navigate("/space/4")}
-              title={spaces[3].zone}
-            />
+              ))
+            }
 
           </div>
 
         </div>
+
+        {/* Legend */}
 
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
@@ -243,6 +218,8 @@ function Availability() {
           </div>
 
         </div>
+
+        {/* Quick Actions */}
 
         <div className="grid md:grid-cols-2 gap-4">
 
