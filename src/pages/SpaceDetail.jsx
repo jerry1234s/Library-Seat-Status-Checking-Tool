@@ -19,62 +19,50 @@ function SpaceDetail() {
   }
 
   return (
-    <Link
-      to="/results"
-      className="
-        inline-block
-        mb-4
-        text-blue-600
-      "
-    >
-      ← Back to Results
-    </Link>
+
     <div className="p-6">
 
+      <Link
+        to="/results"
+        className="inline-block mb-4 text-blue-600"
+      >
+        ← Back to Results
+      </Link>
+
       <h1 className="text-3xl font-bold mb-6">
-
         {space.zone}
-
       </h1>
 
       <div className="border rounded-2xl p-5">
 
         <p>
-          Floor:
-          {" "}
-          {space.floor}
+          Floor: {space.floor}
         </p>
 
         <p>
-          Type:
-          {" "}
-          {space.type}
+          Type: {space.type}
         </p>
 
         <p>
-          Occupancy:
-          {" "}
-          {space.occupancy}%
+          Occupancy: {space.occupancy}%
         </p>
 
         <p>
-          Available Seats:
-          {" "}
-          {space.availableSeats}
+          Available Seats: {space.availableSeats}
         </p>
 
         <p>
-          Environment:
-          {" "}
-          {space.environment}
+          Environment: {space.environment}
         </p>
 
         <p>
           Power:
           {" "}
-          {space.power
-            ? "✅Available"
-            : "❌Not Available"}
+          {
+            space.power
+              ? "✅ Available"
+              : "❌ Not Available"
+          }
         </p>
 
       </div>
@@ -94,6 +82,7 @@ function SpaceDetail() {
       </div>
 
     </div>
+
   );
 }
 
