@@ -31,7 +31,7 @@ export const spaces = [
     floor: "3F",
     zone: "Silent Study Area",
     type: "Individual Study",
-    totalSeats: 15,
+    totalSeats: 30,
     availableSeats: 8,
     power: false,
     environment: "Quiet",
@@ -57,7 +57,7 @@ export const spaces = [
     floor: "3F",
     zone: "Study Booth Area",
     type: "Individual Study",
-    totalSeats: 6,
+    totalSeats: 20,
     availableSeats: 3,
     power: true,
     environment: "Quiet",
@@ -70,7 +70,7 @@ export const spaces = [
     floor: "2F",
     zone: "2F Study Area",
     type: "Individual Study",
-    totalSeats: 38,
+    totalSeats: 50,
     availableSeats: 15,
     power: true,
     environment: "Technology",
@@ -109,12 +109,12 @@ export const spaces = [
     floor: "3F",
     zone: "Lounge 1",
     type: "Relaxation",
-    totalSeats: 18,
-    availableSeats: 12,
+    totalSeats: 12,
+    availableSeats: 3,
     power: false,
     environment: "Casual",
-    markerTop: "42%",
-    markerLeft: "70%"
+    markerTop: "47%",
+    markerLeft: "60%"
   },
 
   {
@@ -122,12 +122,25 @@ export const spaces = [
     floor: "3F",
     zone: "Lounge 2",
     type: "Relaxation",
+    totalSeats: 18,
+    availableSeats: 12,
+    power: true,
+    environment: "Casual",
+    markerTop: "42%",
+    markerLeft: "70%"
+  },
+  
+  {
+    id: 11,
+    floor: "3F",
+    zone: "Lounge 3",
+    type: "Relaxation",
     totalSeats: 27,
     availableSeats: 20,
-    power: true,
+    power: false,
     environment: "Casual",
     markerTop: "25%",
     markerLeft: "80%"
   }
-
+  
 ];
