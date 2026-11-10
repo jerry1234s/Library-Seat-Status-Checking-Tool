@@ -7,6 +7,10 @@ import {
   resetSpaces
 } from "../utils/storageUtils";
 
+import {
+  getOccupancyPercentage
+} from "../utils/statusUtils";
+
 function OccupancySimulator() {
 
   const navigate = useNavigate();
@@ -19,8 +23,10 @@ function OccupancySimulator() {
     value
   ) {
 
-    const seatValue =
-      Number(value);
+    let seatValue =
+      Math.floor(
+        Number(value) || 0
+      );
 
     const updatedSpaces =
       spaces.map((space) => {
@@ -67,9 +73,20 @@ function OccupancySimulator() {
 
   function handleReset() {
 
+    const confirmed =
+      window.confirm(
+        "Reset all prototype data to default values?"
+      );
+
+    if (!confirmed) {
+      return;
+    }
+
     resetSpaces();
 
-    setSpaces(getSpaces());
+    setSpaces(
+      getSpaces()
+    );
 
     alert(
       "Prototype data reset successfully."
@@ -141,57 +158,76 @@ function OccupancySimulator() {
         <div className="space-y-4">
 
           {
-            spaces.map((space) => (
+            spaces.map((space) => {
 
-              <div
-                key={space.id}
-                className="
-                  bg-white
-                  rounded-2xl
-                  shadow
-                  p-5
-                "
-              >
+              const occupancy =
+                getOccupancyPercentage(
+                  space.totalSeats,
+                  space.availableSeats
+                );
 
-                <h2 className="font-bold text-lg">
-                  {space.zone}
-                </h2>
+              return (
 
-                <p className="text-gray-600 mt-1">
-                  Total Seats:
-                  {" "}
-                  {space.totalSeats}
-                </p>
-
-                <p className="text-gray-600 mb-4">
-                  Available Seats:
-                  {" "}
-                  {space.availableSeats}
-                </p>
-
-                <input
-                  type="number"
-                  min="0"
-                  max={space.totalSeats}
-                  value={space.availableSeats}
-                  onChange={(e) =>
-                    handleSeatChange(
-                      space.id,
-                      e.target.value
-                    )
-                  }
+                <div
+                  key={space.id}
                   className="
-                    border
-                    rounded-lg
-                    px-3
-                    py-2
-                    w-40
+                    bg-white
+                    rounded-2xl
+                    shadow
+                    p-5
                   "
-                />
+                >
 
-              </div>
+                  <h2 className="font-bold text-lg">
+                    {space.zone}
+                  </h2>
 
-            ))
+                  <p className="text-gray-600 mt-2">
+                    Total Seats:
+                    {" "}
+                    {space.totalSeats}
+                  </p>
+
+                  <p className="text-gray-600">
+                    Available Seats:
+                    {" "}
+                    {space.availableSeats}
+                    {" / "}
+                    {space.totalSeats}
+                  </p>
+
+                  <p className="text-gray-600 mb-4">
+                    Current Occupancy:
+                    {" "}
+                    {occupancy}%
+                  </p>
+
+                  <input
+                    type="number"
+                    min="0"
+                    max={space.totalSeats}
+                    step="1"
+                    value={space.availableSeats}
+                    onChange={(e) =>
+                      handleSeatChange(
+                        space.id,
+                        e.target.value
+                      )
+                    }
+                    className="
+                      border
+                      rounded-lg
+                      px-3
+                      py-2
+                      w-40
+                    "
+                  />
+
+                </div>
+
+              );
+
+            })
           }
 
         </div>
