@@ -9,8 +9,8 @@ export const spaces = [
     availableSeats: 22,
     power: true,
     environment: "Quiet",
-    markerTop: "15%",
-    markerLeft: "18%"
+    markerTop: "20%",
+    markerLeft: "10%"
   },
 
   {
