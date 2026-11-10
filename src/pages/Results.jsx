@@ -39,6 +39,17 @@ function Results() {
       />
 
       <div className="grid gap-4">
+       {
+          filteredSpaces.length === 0 && (
+
+          <div className="bg-white p-4 rounded-xl">
+
+          No matching spaces found.
+
+          </div>
+
+          )
+      } 
 
         {
           filteredSpaces.map((space) => (
