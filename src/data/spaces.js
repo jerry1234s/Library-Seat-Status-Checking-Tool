@@ -16,14 +16,14 @@ export const spaces = [
   {
     id: 2,
     floor: "3F",
-    zone: "Quiet Reading Area",
+    zone: "Quiet Study Area",
     type: "Individual Study",
     occupancy: 55,
     availableSeats: 18,
     power: true,
     environment: "Quiet",
     markerTop: "72%",
-    markerLeft: "10%"
+    markerLeft: "24%"
   },
 
   {
