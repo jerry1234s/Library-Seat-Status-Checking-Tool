@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { spaces } from "../data/spaces";
-import { getStatus } from "../utils/statusUtils";
+import {
+  getStatus,
+  getOccupancyPercentage
+} from "../utils/statusUtils";
 
 function Availability() {
 
@@ -57,7 +60,16 @@ function Availability() {
               spaces.map((space) => {
 
                 const status =
-                  getStatus(space.occupancy);
+                  getStatus(
+                    space.totalSeats,
+                    space.availableSeats
+                  );
+
+                const occupancy =
+                  getOccupancyPercentage(
+                    space.totalSeats,
+                    space.availableSeats
+                  );
 
                 return (
 
@@ -103,11 +115,17 @@ function Availability() {
                     </p>
 
                     <p>
-                      Available Seats: {space.availableSeats}
+                      Available Seats:
+                      {" "}
+                      {space.availableSeats}
+                      {" / "}
+                      {space.totalSeats}
                     </p>
 
                     <p>
-                      Occupancy: {space.occupancy}%
+                      Occupancy:
+                      {" "}
+                      {occupancy}%
                     </p>
 
                     <p>
@@ -157,33 +175,43 @@ function Availability() {
             />
 
             {
-              spaces.map((space) => (
+              spaces.map((space) => {
 
-                <button
-                  key={space.id}
-                  className={`
-                    absolute
-                    w-5
-                    h-5
-                    ${getStatus(space.occupancy).bg}
-                    rounded-full
-                    border-2
-                    border-white
-                    shadow
-                    hover:scale-110
-                    transition
-                  `}
-                  style={{
-                    top: space.markerTop,
-                    left: space.markerLeft
-                  }}
-                  onClick={() =>
-                    navigate(`/space/${space.id}`)
-                  }
-                  title={space.zone}
-                />
+                const status =
+                  getStatus(
+                    space.totalSeats,
+                    space.availableSeats
+                  );
 
-              ))
+                return (
+
+                  <button
+                    key={space.id}
+                    className={`
+                      absolute
+                      w-5
+                      h-5
+                      ${status.bg}
+                      rounded-full
+                      border-2
+                      border-white
+                      shadow
+                      hover:scale-110
+                      transition
+                    `}
+                    style={{
+                      top: space.markerTop,
+                      left: space.markerLeft
+                    }}
+                    onClick={() =>
+                      navigate(`/space/${space.id}`)
+                    }
+                    title={space.zone}
+                  />
+
+                );
+
+              })
             }
 
           </div>
@@ -279,6 +307,7 @@ function Availability() {
     </div>
 
   );
+
 }
 
 export default Availability;
