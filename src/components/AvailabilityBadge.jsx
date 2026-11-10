@@ -1,23 +1,25 @@
+import { getStatus } from "../utils/statusUtils";
+
 function AvailabilityBadge({ occupancy }) {
 
-  let color = "bg-green-500";
-  let text = "Available";
-
-  if (occupancy >= 80) {
-    color = "bg-red-500";
-    text = "Nearly Full";
-  }
-  else if (occupancy >= 60) {
-    color = "bg-yellow-500";
-    text = "Busy";
-  }
+  const status =
+    getStatus(occupancy);
 
   return (
+
     <span
-      className={`${color} text-white px-3 py-1 rounded-full text-sm`}
+      className={`
+        ${status.bg}
+        text-white
+        px-3
+        py-1
+        rounded-full
+        text-sm
+      `}
     >
-      {text}
+      {status.label}
     </span>
+
   );
 }
 
