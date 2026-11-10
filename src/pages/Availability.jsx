@@ -1,44 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { spaces } from "../data/spaces";
+import { getStatus } from "../utils/statusUtils";
 
 function Availability() {
 
   const navigate = useNavigate();
-
-  const getStatus = (occupancy) => {
-
-    if (occupancy >= 80) {
-      return {
-        label: "Nearly Full",
-        bg: "bg-red-500"
-      };
-    }
-
-    if (occupancy >= 60) {
-      return {
-        label: "Busy",
-        bg: "bg-yellow-500"
-      };
-    }
-
-    return {
-      label: "Available",
-      bg: "bg-green-500"
-    };
-  };
-
-  const getMarkerColor = (occupancy) => {
-
-    if (occupancy >= 80) {
-      return "bg-red-500";
-    }
-
-    if (occupancy >= 60) {
-      return "bg-yellow-500";
-    }
-
-    return "bg-green-500";
-  };
 
   return (
 
@@ -175,7 +141,7 @@ function Availability() {
                 left-[45%]
                 w-6
                 h-6
-                ${getMarkerColor(spaces[0].occupancy)}
+                ${getStatus(spaces[0].occupancy).bg}
                 rounded-full
                 border-2
                 border-white
@@ -191,7 +157,7 @@ function Availability() {
                 left-[68%]
                 w-6
                 h-6
-                ${getMarkerColor(spaces[1].occupancy)}
+                ${getStatus(spaces[1].occupancy).bg}
                 rounded-full
                 border-2
                 border-white
@@ -207,7 +173,7 @@ function Availability() {
                 left-[25%]
                 w-6
                 h-6
-                ${getMarkerColor(spaces[2].occupancy)}
+                ${getStatus(spaces[2].occupancy).bg}
                 rounded-full
                 border-2
                 border-white
@@ -223,7 +189,7 @@ function Availability() {
                 left-[85%]
                 w-6
                 h-6
-                ${getMarkerColor(spaces[3].occupancy)}
+                ${getStatus(spaces[3].occupancy).bg}
                 rounded-full
                 border-2
                 border-white
