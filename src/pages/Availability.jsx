@@ -44,8 +44,6 @@ function Availability() {
 
     <div className="min-h-screen bg-gray-100">
 
-      {/* Header */}
-
       <div className="bg-blue-700 text-white p-6">
 
         <h1 className="text-3xl font-bold">
@@ -61,7 +59,23 @@ function Availability() {
 
       <div className="max-w-6xl mx-auto p-6">
 
-        {/* Current Space Status */}
+        <div className="mb-6">
+
+          <button
+            onClick={() => navigate("/")}
+            className="
+              px-4
+              py-2
+              bg-gray-700
+              text-white
+              rounded-lg
+              hover:bg-gray-800
+            "
+          >
+            Home
+          </button>
+
+        </div>
 
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
@@ -135,8 +149,6 @@ function Availability() {
 
         </div>
 
-        {/* Floor Map */}
-
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
           <h2 className="text-xl font-bold mb-2">
@@ -156,8 +168,6 @@ function Availability() {
               className="rounded-xl w-full"
             />
 
-            {/* Marker 1 */}
-
             <button
               className={`
                 absolute
@@ -173,8 +183,6 @@ function Availability() {
               onClick={() => navigate("/space/1")}
               title={spaces[0].zone}
             />
-
-            {/* Marker 2 */}
 
             <button
               className={`
@@ -192,8 +200,6 @@ function Availability() {
               title={spaces[1].zone}
             />
 
-            {/* Marker 3 */}
-
             <button
               className={`
                 absolute
@@ -209,8 +215,6 @@ function Availability() {
               onClick={() => navigate("/space/3")}
               title={spaces[2].zone}
             />
-
-            {/* Marker 4 */}
 
             <button
               className={`
@@ -231,8 +235,6 @@ function Availability() {
           </div>
 
         </div>
-
-        {/* Legend */}
 
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
@@ -275,8 +277,6 @@ function Availability() {
           </div>
 
         </div>
-
-        {/* Quick Actions */}
 
         <div className="grid md:grid-cols-2 gap-4">
 
