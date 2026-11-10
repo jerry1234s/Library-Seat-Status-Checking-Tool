@@ -96,7 +96,12 @@ function Home() {
           </h2>
 
           <p className="text-gray-600 mb-4">
-            For prototype demonstration purposes only.
+            For demonstration purposes only.
+            This tool simulates occupancy updates and
+            is not connected to any actual library system.
+            Changes are stored locally in the current browser
+            using local storage and will persist only on
+            this device unless the browser data is cleared.
           </p>
 
           <button
