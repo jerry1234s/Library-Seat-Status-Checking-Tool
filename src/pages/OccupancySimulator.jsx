@@ -149,6 +149,9 @@ function OccupancySimulator() {
             <p>
               This tool simulates occupancy updates and
               is not connected to any actual library system.
+              Changes are stored locally in the current browser
+              using local storage and will persist only on
+              this device unless the browser data is cleared.
             </p>
 
           </div>
