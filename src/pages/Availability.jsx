@@ -140,7 +140,7 @@ function Availability() {
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
           <h2 className="text-xl font-bold mb-2">
-            Interactive Floor Map
+            Interactive Map
           </h2>
 
           <p className="text-gray-600 mb-4">
