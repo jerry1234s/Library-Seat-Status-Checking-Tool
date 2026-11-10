@@ -4,7 +4,9 @@ import {
   useNavigate
 } from "react-router-dom";
 
-import { spaces } from "../data/spaces";
+import { getSpaces }
+  from "../utils/storageUtils";
+
 import FilterBar from "../components/FilterBar";
 import SpaceCard from "../components/SpaceCard";
 
@@ -12,7 +14,11 @@ function Results() {
 
   const navigate = useNavigate();
 
-  const [searchParams] = useSearchParams();
+  const spaces =
+    getSpaces();
+
+  const [searchParams] =
+    useSearchParams();
 
   const initialType =
     searchParams.get("type") || "";
@@ -41,6 +47,7 @@ function Results() {
         typeMatch &&
         powerMatch
       );
+
     }
   );
 
@@ -161,6 +168,7 @@ function Results() {
     </div>
 
   );
+
 }
 
 export default Results;
