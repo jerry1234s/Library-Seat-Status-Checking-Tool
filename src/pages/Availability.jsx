@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { spaces } from "../data/spaces";
+import { getSpaces } from "../utils/storageUtils";
 import {
   getStatus,
   getOccupancyPercentage
@@ -8,6 +8,7 @@ import {
 function Availability() {
 
   const navigate = useNavigate();
+  const spaces = getSpaces();
 
   return (
 
