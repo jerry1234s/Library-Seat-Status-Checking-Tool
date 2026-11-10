@@ -148,8 +148,8 @@ function Availability() {
                   key={space.id}
                   className={`
                     absolute
-                    w-6
-                    h-6
+                    w-5
+                    h-5
                     ${getStatus(space.occupancy).bg}
                     rounded-full
                     border-2
