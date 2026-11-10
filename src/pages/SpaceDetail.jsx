@@ -1,6 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { spaces } from "../data/spaces";
-import { getStatus } from "../utils/statusUtils";
+import {
+  getStatus,
+  getOccupancyPercentage
+} from "../utils/statusUtils";
 
 function SpaceDetail() {
 
@@ -19,8 +22,17 @@ function SpaceDetail() {
     );
   }
 
+  const occupancy =
+    getOccupancyPercentage(
+      space.totalSeats,
+      space.availableSeats
+    );
+
   const status =
-    getStatus(space.occupancy);
+    getStatus(
+      space.totalSeats,
+      space.availableSeats
+    );
 
   return (
 
@@ -90,11 +102,15 @@ function SpaceDetail() {
         </p>
 
         <p>
-          Occupancy: {space.occupancy}%
+          Occupancy: {occupancy}%
         </p>
 
         <p>
-          Available Seats: {space.availableSeats}
+          Available Seats:
+          {" "}
+          {space.availableSeats}
+          {" / "}
+          {space.totalSeats}
         </p>
 
         <p>
@@ -166,6 +182,7 @@ function SpaceDetail() {
     </div>
 
   );
+
 }
 
 export default SpaceDetail;
