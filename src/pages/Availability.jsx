@@ -269,7 +269,7 @@ function Availability() {
         <div className="grid md:grid-cols-2 gap-4">
 
           <button
-            onClick={() => navigate("/results")}
+            onClick={() => navigate("/results?type=Individual%20Study")}
             className="
               bg-blue-600
               text-white
@@ -282,7 +282,7 @@ function Availability() {
           </button>
 
           <button
-            onClick={() => navigate("/results")}
+            onClick={() => navigate("/results?power=true")}
             className="
               bg-green-600
               text-white
