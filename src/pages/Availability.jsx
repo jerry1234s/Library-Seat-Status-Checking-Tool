@@ -63,7 +63,18 @@ function Availability() {
 
                   <div
                     key={space.id}
-                    className="border rounded-xl p-4"
+                    className="
+                      border
+                      rounded-xl
+                      p-4
+                      cursor-pointer
+                      hover:bg-gray-50
+                      hover:shadow-md
+                      transition
+                    "
+                    onClick={() =>
+                      navigate(`/space/${space.id}`)
+                    }
                   >
 
                     <div className="flex justify-between">
@@ -107,6 +118,10 @@ function Availability() {
                           ? "✅ Available"
                           : "❌ Not Available"
                       }
+                    </p>
+
+                    <p className="mt-3 text-blue-600 text-sm font-medium">
+                      View Details →
                     </p>
 
                   </div>
