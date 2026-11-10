@@ -27,7 +27,21 @@ function Availability() {
     };
   };
 
+  const getMarkerColor = (occupancy) => {
+
+    if (occupancy >= 80) {
+      return "bg-red-500";
+    }
+
+    if (occupancy >= 60) {
+      return "bg-yellow-500";
+    }
+
+    return "bg-green-500";
+  };
+
   return (
+
     <div className="min-h-screen bg-gray-100">
 
       {/* Header */}
@@ -95,23 +109,21 @@ function Availability() {
                   </p>
 
                   <p>
-                    Available Seats:
-                    {" "}
-                    {space.availableSeats}
+                    Available Seats: {space.availableSeats}
                   </p>
 
                   <p>
-                    Occupancy:
-                    {" "}
-                    {space.occupancy}%
+                    Occupancy: {space.occupancy}%
                   </p>
 
                   <p>
                     Power:
                     {" "}
-                    {space.power
-                      ? "✅ Available"
-                      : "❌ Not Available"}
+                    {
+                      space.power
+                        ? "✅ Available"
+                        : "❌ Not Available"
+                    }
                   </p>
 
                 </div>
@@ -147,73 +159,73 @@ function Availability() {
             {/* Marker 1 */}
 
             <button
-              className="
+              className={`
                 absolute
                 top-[35%]
                 left-[45%]
                 w-6
                 h-6
-                bg-green-500
+                ${getMarkerColor(spaces[0].occupancy)}
                 rounded-full
                 border-2
                 border-white
-              "
+              `}
               onClick={() => navigate("/space/1")}
-              title="Silent Study Zone"
+              title={spaces[0].zone}
             />
 
             {/* Marker 2 */}
 
             <button
-              className="
+              className={`
                 absolute
                 top-[30%]
                 left-[68%]
                 w-6
                 h-6
-                bg-red-500
+                ${getMarkerColor(spaces[1].occupancy)}
                 rounded-full
                 border-2
                 border-white
-              "
+              `}
               onClick={() => navigate("/space/2")}
-              title="Group Discussion Area"
+              title={spaces[1].zone}
             />
 
             {/* Marker 3 */}
 
             <button
-              className="
+              className={`
                 absolute
                 top-[55%]
                 left-[25%]
                 w-6
                 h-6
-                bg-green-500
+                ${getMarkerColor(spaces[2].occupancy)}
                 rounded-full
                 border-2
                 border-white
-              "
+              `}
               onClick={() => navigate("/space/3")}
-              title="East Lounge"
+              title={spaces[2].zone}
             />
 
             {/* Marker 4 */}
 
             <button
-              className="
+              className={`
                 absolute
                 top-[78%]
                 left-[85%]
                 w-6
                 h-6
-                bg-yellow-500
+                ${getMarkerColor(spaces[3].occupancy)}
                 rounded-full
                 border-2
                 border-white
-              "
+              `}
               onClick={() => navigate("/space/4")}
-              title="Computer Area"
+              title={spaces[3].zone}
             />
 
           </div>
@@ -269,7 +281,11 @@ function Availability() {
         <div className="grid md:grid-cols-2 gap-4">
 
           <button
-            onClick={() => navigate("/results?type=Individual%20Study")}
+            onClick={() =>
+              navigate(
+                "/results?type=Individual%20Study"
+              )
+            }
             className="
               bg-blue-600
               text-white
@@ -282,7 +298,11 @@ function Availability() {
           </button>
 
           <button
-            onClick={() => navigate("/results?power=true")}
+            onClick={() =>
+              navigate(
+                "/results?power=true"
+              )
+            }
             className="
               bg-green-600
               text-white
@@ -299,6 +319,7 @@ function Availability() {
       </div>
 
     </div>
+
   );
 }
 
