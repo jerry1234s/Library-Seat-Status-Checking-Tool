@@ -5,6 +5,7 @@ function Home() {
   const navigate = useNavigate();
 
   return (
+
     <div className="min-h-screen bg-gray-100">
 
       <div className="max-w-4xl mx-auto px-6 py-12">
@@ -88,10 +89,40 @@ function Home() {
 
         </div>
 
+        <div className="mt-12 border-t pt-8">
+
+          <h2 className="text-xl font-bold mb-2">
+            Prototype Demonstration Tools
+          </h2>
+
+          <p className="text-gray-600 mb-4">
+            For prototype demonstration purposes only.
+          </p>
+
+          <button
+            className="
+              bg-gray-800
+              text-white
+              px-6
+              py-3
+              rounded-xl
+              hover:bg-black
+            "
+            onClick={() =>
+              navigate("/simulator")
+            }
+          >
+            Open Occupancy Editor
+          </button>
+
+        </div>
+
       </div>
 
     </div>
+
   );
+
 }
 
 export default Home;
