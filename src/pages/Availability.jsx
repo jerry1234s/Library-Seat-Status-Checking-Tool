@@ -2,9 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { getSpaces } from "../utils/storageUtils";
 import {
   getAvailabilityPercentage,
-  getStatus,
-  getOccupancyPercentage,
-  getOccupiedSeats
+  getStatus
 } from "../utils/statusUtils";
 
 function Availability() {
@@ -68,20 +66,8 @@ function Availability() {
                     space.availableSeats
                   );
 
-                const occupancy =
-                  getOccupancyPercentage(
-                    space.totalSeats,
-                    space.availableSeats
-                  );
-
                 const availability =
                   getAvailabilityPercentage(
-                    space.totalSeats,
-                    space.availableSeats
-                  );
-
-                const occupiedSeats =
-                  getOccupiedSeats(
                     space.totalSeats,
                     space.availableSeats
                   );
@@ -150,20 +136,6 @@ function Availability() {
                     </p>
 
                     <p>
-                      Occupied Seats:
-                      {" "}
-                      {occupiedSeats}
-                      {" / "}
-                      {space.totalSeats}
-                    </p>
-
-                    <p>
-                      Occupancy:
-                      {" "}
-                      {occupancy}%
-                    </p>
-
-                    <p>
                       Power:
                       {" "}
                       {
@@ -197,7 +169,7 @@ function Availability() {
           </h2>
 
           <p className="text-gray-600 mb-4">
-            Select an area to view occupancy,
+            Select an area to view availability,
             environment and power availability.
           </p>
 
@@ -342,9 +314,7 @@ function Availability() {
 
           <button
             onClick={() =>
-              navigate(
-                "/results?type=Individual%20Study"
-              )
+              navigate("/results")
             }
             className="
               bg-blue-600
