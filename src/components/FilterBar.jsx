@@ -24,6 +24,7 @@ function FilterBar({
       ]);
 
       return;
+
     }
 
     setSelectedTypes(
@@ -103,6 +104,43 @@ function FilterBar({
         Need Power Outlet
 
       </label>
+
+      <div
+        className="
+          mt-4
+          rounded-xl
+          bg-gray-50
+          p-4
+        "
+      >
+
+        <h3 className="font-medium mb-2">
+          Power Guide
+        </h3>
+
+        <p className="text-sm mb-1">
+
+          ✅ Available:
+
+          {" "}
+
+          This space provides
+          power access.
+
+        </p>
+
+        <p className="text-sm">
+
+          ❌ Not Available:
+
+          {" "}
+
+          This space does not
+          provide power access.
+
+        </p>
+
+      </div>
 
     </div>
 
