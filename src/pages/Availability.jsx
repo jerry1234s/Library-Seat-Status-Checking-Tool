@@ -47,8 +47,6 @@ function Availability() {
 
         </div>
 
-        {/* Current Space Status */}
-
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
           <h2 className="text-xl font-bold mb-4">
@@ -160,8 +158,6 @@ function Availability() {
 
         </div>
 
-        {/* Interactive Map */}
-
         <div className="bg-white rounded-2xl shadow p-5 mb-6">
 
           <h2 className="text-xl font-bold mb-2">
@@ -172,6 +168,35 @@ function Availability() {
             Select an area to view availability,
             environment and power availability.
           </p>
+
+          <div className="mb-4 rounded-xl bg-gray-50 p-4 text-sm">
+
+            <h3 className="font-bold mb-2">
+              Map Guide
+            </h3>
+
+            <p>
+              <span className="text-green-600 font-semibold">
+                Green
+              </span>
+              {" = Available (<60% occupied)"}
+            </p>
+
+            <p>
+              <span className="text-yellow-600 font-semibold">
+                Yellow
+              </span>
+              {" = Busy (60%-79% occupied)"}
+            </p>
+
+            <p>
+              <span className="text-red-600 font-semibold">
+                Red
+              </span>
+              {" = Nearly Full (≥80% occupied)"}
+            </p>
+
+          </div>
 
           <div className="relative">
 
@@ -264,52 +289,6 @@ function Availability() {
 
         </div>
 
-        {/* Legend */}
-
-        <div className="bg-white rounded-2xl shadow p-5 mb-6">
-
-          <h2 className="font-bold mb-3">
-            Availability Legend
-          </h2>
-
-          <div className="space-y-3">
-
-            <div className="flex items-center gap-3">
-
-              <div className="w-4 h-4 rounded-full bg-green-500"></div>
-
-              <span>
-                Available
-              </span>
-
-            </div>
-
-            <div className="flex items-center gap-3">
-
-              <div className="w-4 h-4 rounded-full bg-yellow-500"></div>
-
-              <span>
-                Busy
-              </span>
-
-            </div>
-
-            <div className="flex items-center gap-3">
-
-              <div className="w-4 h-4 rounded-full bg-red-500"></div>
-
-              <span>
-                Nearly Full
-              </span>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* Quick Actions */}
-
         <div className="grid md:grid-cols-2 gap-4">
 
           <button
@@ -324,7 +303,7 @@ function Availability() {
               font-semibold
             "
           >
-            Find Study Spaces
+            Find Library Spaces
           </button>
 
           <button
