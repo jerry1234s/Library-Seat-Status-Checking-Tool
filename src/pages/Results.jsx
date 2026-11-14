@@ -349,11 +349,11 @@ function Results() {
           >
 
             <option value="availability-desc">
-              Available Seats ↓
+              Available Seats Descending↓
             </option>
 
             <option value="availability-asc">
-              Available Seats ↑
+              Available Seats Ascending ↑ 
             </option>
 
             <option value="type">
