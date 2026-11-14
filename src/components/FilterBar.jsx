@@ -2,7 +2,9 @@ function FilterBar({
   selectedType,
   setSelectedType,
   powerOnly,
-  setPowerOnly
+  setPowerOnly,
+  excludedType,
+  setExcludedType
 }) {
 
   return (
@@ -48,6 +50,30 @@ function FilterBar({
         Need Power Outlet
 
       </label>
+
+      <select
+        value={excludedType}
+        onChange={(e) => setExcludedType(e.target.value)}
+        className="border rounded-lg p-2 w-full mt-4"
+      >
+
+        <option value="">
+          Do Not Exclude a Space Type
+        </option>
+
+        <option value="Individual Study">
+          Exclude Individual Study
+        </option>
+
+        <option value="Group Discussion">
+          Exclude Group Discussion
+        </option>
+
+        <option value="Relaxation">
+          Exclude Relaxation
+        </option>
+
+      </select>
 
     </div>
 
