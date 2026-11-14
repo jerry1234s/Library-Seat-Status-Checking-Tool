@@ -58,6 +58,11 @@ function Results() {
     "availability-desc"
   );
 
+  const [
+    searchTerm,
+    setSearchTerm
+  ] = useState("");
+
   useEffect(() => {
 
     const updatedParams =
@@ -135,9 +140,26 @@ function Results() {
           !powerOnly ||
           space.power;
 
+        const searchMatch =
+
+          searchTerm === "" ||
+
+          space.zone
+            .toLowerCase()
+            .includes(
+              searchTerm.toLowerCase()
+            ) ||
+
+          space.floor
+            .toLowerCase()
+            .includes(
+              searchTerm.toLowerCase()
+            );
+
         return (
           typeMatch &&
-          powerMatch
+          powerMatch &&
+          searchMatch
         );
 
       }
@@ -329,6 +351,38 @@ function Results() {
 
         <div className="mb-6">
 
+          <label
+            className="
+              font-medium
+              block
+              mb-2
+            "
+          >
+            Search
+          </label>
+
+          <input
+            type="text"
+            placeholder="Search by Floor, Zone or Space Name"
+            value={searchTerm}
+            onChange={(e) =>
+              setSearchTerm(
+                e.target.value
+              )
+            }
+            className="
+              w-full
+              border
+              rounded-lg
+              px-3
+              py-2
+            "
+          />
+
+        </div>
+
+        <div className="mb-6">
+
           <label className="font-medium mr-3">
             Sort By
           </label>
@@ -349,11 +403,11 @@ function Results() {
           >
 
             <option value="availability-desc">
-              Available Seats Descending↓
+              Available Seats Descending ↓
             </option>
 
             <option value="availability-asc">
-              Available Seats Ascending ↑ 
+              Available Seats Ascending ↑
             </option>
 
             <option value="type">
