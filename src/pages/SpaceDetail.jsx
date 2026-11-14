@@ -3,12 +3,12 @@ import {
   useLocation,
   useParams
 } from "react-router-dom";
+
 import { getSpaces } from "../utils/storageUtils";
+
 import {
   getAvailabilityPercentage,
-  getStatus,
-  getOccupancyPercentage,
-  getOccupiedSeats
+  getStatus
 } from "../utils/statusUtils";
 
 function SpaceDetail() {
@@ -23,27 +23,17 @@ function SpaceDetail() {
     );
 
   if (!space) {
+
     return (
       <div className="p-6">
         Space not found
       </div>
     );
-  }
 
-  const occupancy =
-    getOccupancyPercentage(
-      space.totalSeats,
-      space.availableSeats
-    );
+  }
 
   const availability =
     getAvailabilityPercentage(
-      space.totalSeats,
-      space.availableSeats
-    );
-
-  const occupiedSeats =
-    getOccupiedSeats(
       space.totalSeats,
       space.availableSeats
     );
@@ -134,19 +124,9 @@ function SpaceDetail() {
         </p>
 
         <p>
-          Available Seats Percentage: {availability}%
-        </p>
-
-        <p>
-          Occupied Seats:
+          Available Seats Percentage:
           {" "}
-          {occupiedSeats}
-          {" / "}
-          {space.totalSeats}
-        </p>
-
-        <p>
-          Occupancy: {occupancy}%
+          {availability}%
         </p>
 
         <p>
@@ -260,7 +240,8 @@ function SpaceDetail() {
           </p>
 
           <p className="mt-1">
-            The colored marker indicates the selected location:
+            The colored marker shows the location
+            and availability status of the selected space:
             {" "}
             {space.zone}.
           </p>
