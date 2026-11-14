@@ -10,6 +10,12 @@ import { getSpaces }
 import FilterBar from "../components/FilterBar";
 import SpaceCard from "../components/SpaceCard";
 
+const ALL_TYPES = [
+  "Individual Study",
+  "Group Discussion",
+  "Relaxation"
+];
+
 function Results() {
 
   const navigate = useNavigate();
@@ -20,18 +26,12 @@ function Results() {
   const [searchParams, setSearchParams] =
     useSearchParams();
 
-  const allTypes = [
-    "Individual Study",
-    "Group Discussion",
-    "Relaxation"
-  ];
-
   const initialTypes =
     searchParams.get("types")
       ? searchParams
           .get("types")
           .split(",")
-      : allTypes;
+      : ALL_TYPES;
 
   const initialPower =
     searchParams.get("power") === "true";
@@ -55,7 +55,7 @@ function Results() {
 
     if (
       selectedTypes.length > 0 &&
-      selectedTypes.length < allTypes.length
+      selectedTypes.length < ALL_TYPES.length
     ) {
 
       updatedParams.set(
