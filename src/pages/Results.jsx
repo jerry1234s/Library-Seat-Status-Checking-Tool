@@ -363,7 +363,7 @@ function Results() {
 
           <input
             type="text"
-            placeholder="Search by Floor, Zone or Space Name"
+            placeholder="Search by Floor or Space Name"
             value={searchTerm}
             onChange={(e) =>
               setSearchTerm(
