@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useSearchParams,
   useNavigate
@@ -17,7 +17,7 @@ function Results() {
   const spaces =
     getSpaces();
 
-  const [searchParams] =
+  const [searchParams, setSearchParams] =
     useSearchParams();
 
   const initialType =
@@ -26,11 +26,61 @@ function Results() {
   const initialPower =
     searchParams.get("power") === "true";
 
+  const initialExcludedType =
+    searchParams.get("excludeType") || "";
+
   const [selectedType, setSelectedType] =
     useState(initialType);
 
   const [powerOnly, setPowerOnly] =
     useState(initialPower);
+
+  const [excludedType, setExcludedType] =
+    useState(initialExcludedType);
+
+  useEffect(() => {
+
+    const updatedParams =
+      new URLSearchParams(searchParams);
+
+    if (selectedType) {
+      updatedParams.set("type", selectedType);
+    }
+    else {
+      updatedParams.delete("type");
+    }
+
+    if (powerOnly) {
+      updatedParams.set("power", "true");
+    }
+    else {
+      updatedParams.delete("power");
+    }
+
+    if (excludedType) {
+      updatedParams.set("excludeType", excludedType);
+    }
+    else {
+      updatedParams.delete("excludeType");
+    }
+
+    if (
+      updatedParams.toString() !==
+      searchParams.toString()
+    ) {
+      setSearchParams(
+        updatedParams,
+        { replace: true }
+      );
+    }
+
+  }, [
+    selectedType,
+    powerOnly,
+    excludedType,
+    searchParams,
+    setSearchParams
+  ]);
 
   const filteredSpaces = spaces.filter(
     (space) => {
@@ -43,9 +93,14 @@ function Results() {
         !powerOnly ||
         space.power;
 
+      const excludedTypeMatch =
+        excludedType === "" ||
+        space.type !== excludedType;
+
       return (
         typeMatch &&
-        powerMatch
+        powerMatch &&
+        excludedTypeMatch
       );
 
     }
@@ -122,11 +177,32 @@ function Results() {
           )
         }
 
+        {
+          excludedType && (
+
+            <div
+              className="
+                mb-4
+                bg-red-100
+                text-red-800
+                px-4
+                py-2
+                rounded-xl
+              "
+            >
+              Excluding: {excludedType}
+            </div>
+
+          )
+        }
+
         <FilterBar
           selectedType={selectedType}
           setSelectedType={setSelectedType}
           powerOnly={powerOnly}
           setPowerOnly={setPowerOnly}
+          excludedType={excludedType}
+          setExcludedType={setExcludedType}
         />
 
         {
