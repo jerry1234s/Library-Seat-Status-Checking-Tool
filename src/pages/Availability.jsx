@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { getSpaces } from "../utils/storageUtils";
-import { LIBRARY_ENTRANCE } from "../data/spaces";
+
+import {
+  LIBRARY_ENTRANCE,
+  STAIR
+} from "../data/spaces";
 
 import {
   getAvailabilityPercentage,
@@ -198,6 +202,14 @@ function Availability() {
               {" = Nearly Full (≥80% occupied)"}
             </p>
 
+            <p>
+              ⚫ = Library Entrance
+            </p>
+
+            <p>
+              🪜 = Stair
+            </p>
+
           </div>
 
           <div className="relative">
@@ -245,6 +257,54 @@ function Availability() {
                 "
               >
                 {LIBRARY_ENTRANCE.label}
+              </span>
+
+            </div>
+
+            <div
+              className="
+                absolute
+                flex
+                items-center
+                gap-2
+              "
+              style={{
+                top: STAIR.markerTop,
+                left: STAIR.markerLeft
+              }}
+            >
+
+              <span
+                className="
+                  w-6
+                  h-6
+                  rounded-full
+                  bg-blue-700
+                  border-2
+                  border-white
+                  shadow
+                  flex
+                  items-center
+                  justify-center
+                  text-white
+                  text-xs
+                "
+              >
+                📶
+              </span>
+
+              <span
+                className="
+                  bg-blue-700
+                  text-white
+                  text-xs
+                  px-2
+                  py-1
+                  rounded
+                  whitespace-nowrap
+                "
+              >
+                {STAIR.label}
               </span>
 
             </div>
