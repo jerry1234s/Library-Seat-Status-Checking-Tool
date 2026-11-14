@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 
 import { getSpaces } from "../utils/storageUtils";
+import { LIBRARY_ENTRANCE } from "../data/spaces";
 
 import {
   getAvailabilityPercentage,
@@ -230,12 +231,14 @@ function SpaceDetail() {
           <div
             className="
               absolute
-              top-[12%]
-              right-[5%]
               flex
               items-center
               gap-2
             "
+            style={{
+              top: LIBRARY_ENTRANCE.markerTop,
+              left: LIBRARY_ENTRANCE.markerLeft
+            }}
           >
 
             <span
@@ -261,7 +264,7 @@ function SpaceDetail() {
                 whitespace-nowrap
               "
             >
-              Library Entrance
+              {LIBRARY_ENTRANCE.label}
             </span>
 
           </div>
