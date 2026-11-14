@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import {
   getSpaces,
   saveSpaces,
-  resetSpaces
+  resetSpaces,
+  updateLastUpdated
 } from "../utils/storageUtils";
 
 import {
@@ -65,6 +66,8 @@ function OccupancySimulator() {
 
     saveSpaces(spaces);
 
+    updateLastUpdated();
+
     alert(
       "Occupancy data updated successfully."
     );
@@ -83,6 +86,8 @@ function OccupancySimulator() {
     }
 
     resetSpaces();
+
+    updateLastUpdated();
 
     setSpaces(
       getSpaces()
