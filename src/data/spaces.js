@@ -1,11 +1,11 @@
 export const LIBRARY_ENTRANCE = {
   label: "Library Entrance",
-  markerTop: "20%",
-  markerLeft: "40%"
+  markerTop: "50%",
+  markerLeft: "37%"
 };
 
-export const STAIRCASE = {
-  label: "Staircase",
+export const STAIR = {
+  label: "Stair",
   markerTop: "10%",
   markerLeft: "83%"
 };
