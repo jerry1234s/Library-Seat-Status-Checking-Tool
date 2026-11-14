@@ -4,7 +4,10 @@ import {
   useParams
 } from "react-router-dom";
 
-import { getSpaces } from "../utils/storageUtils";
+import {
+  getSpaces,
+  getLastUpdated
+} from "../utils/storageUtils";
 
 import {
   LIBRARY_ENTRANCE,
@@ -20,7 +23,12 @@ function SpaceDetail() {
 
   const { id } = useParams();
   const location = useLocation();
-  const spaces = getSpaces();
+
+  const spaces =
+    getSpaces();
+
+  const lastUpdated =
+    getLastUpdated();
 
   const space =
     spaces.find(
@@ -99,9 +107,22 @@ function SpaceDetail() {
 
       </div>
 
-      <h1 className="text-3xl font-bold mb-6">
+      <h1 className="text-3xl font-bold mb-2">
         {space.zone}
       </h1>
+
+      <p className="text-gray-500 mb-6">
+
+        Last Updated:
+
+        {" "}
+
+        {
+          lastUpdated ||
+          "Not Available"
+        }
+
+      </p>
 
       <div className="border rounded-2xl p-5">
 
@@ -195,6 +216,14 @@ function SpaceDetail() {
               Red
             </span>
             {" = Nearly Full (≥80% occupied)"}
+          </p>
+
+          <p>
+            ⚫ = Library Entrance
+          </p>
+
+          <p>
+            📶 = Stair
           </p>
 
           <p className="mt-2">
