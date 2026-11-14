@@ -8,8 +8,7 @@ import {
 } from "../utils/storageUtils";
 
 import {
-  getAvailabilityPercentage,
-  getOccupancyPercentage
+  getAvailabilityPercentage
 } from "../utils/statusUtils";
 
 function OccupancySimulator() {
@@ -165,12 +164,6 @@ function OccupancySimulator() {
           {
             spaces.map((space) => {
 
-              const occupancy =
-                getOccupancyPercentage(
-                  space.totalSeats,
-                  space.availableSeats
-                );
-
               const availability =
                 getAvailabilityPercentage(
                   space.totalSeats,
@@ -207,16 +200,10 @@ function OccupancySimulator() {
                     {space.totalSeats}
                   </p>
 
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 mb-4">
                     Available Seats Percentage:
                     {" "}
                     {availability}%
-                  </p>
-
-                  <p className="text-gray-600 mb-4">
-                    Occupancy:
-                    {" "}
-                    {occupancy}%
                   </p>
 
                   <input
