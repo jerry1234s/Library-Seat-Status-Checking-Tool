@@ -1,13 +1,13 @@
 export const LIBRARY_ENTRANCE = {
   label: "Library Entrance",
   markerTop: "50%",
-  markerLeft: "37%"
+  markerLeft: "39%"
 };
 
 export const STAIR = {
   label: "Stair",
-  markerTop: "10%",
-  markerLeft: "83%"
+  markerTop: "5%",
+  markerLeft: "73%"
 };
 
 export const spaces = [
