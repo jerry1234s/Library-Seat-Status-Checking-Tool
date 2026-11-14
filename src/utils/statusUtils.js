@@ -31,18 +31,6 @@ export function getAvailabilityPercentage(
 
 }
 
-export function getOccupiedSeats(
-  totalSeats,
-  availableSeats
-) {
-
-  return Math.max(
-    0,
-    totalSeats - availableSeats
-  );
-
-}
-
 export function getStatus(
   totalSeats,
   availableSeats
@@ -55,19 +43,23 @@ export function getStatus(
     );
 
   if (occupancy >= 80) {
+
     return {
       label: "Nearly Full",
       bg: "bg-red-500",
       occupancy
     };
+
   }
 
   if (occupancy >= 60) {
+
     return {
       label: "Busy",
       bg: "bg-yellow-500",
       occupancy
     };
+
   }
 
   return {
