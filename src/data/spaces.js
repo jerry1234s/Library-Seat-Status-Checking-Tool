@@ -1,3 +1,9 @@
+export const LIBRARY_ENTRANCE = {
+  label: "Library Entrance",
+  markerTop: "12%",
+  markerLeft: "88%"
+};
+
 export const spaces = [
 
   {
@@ -129,7 +135,7 @@ export const spaces = [
     markerTop: "42%",
     markerLeft: "70%"
   },
-  
+
   {
     id: 11,
     floor: "3F",
@@ -142,5 +148,5 @@ export const spaces = [
     markerTop: "25%",
     markerLeft: "80%"
   }
-  
+
 ];
