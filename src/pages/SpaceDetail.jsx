@@ -1,13 +1,20 @@
-import { Link, useParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useParams
+} from "react-router-dom";
 import { getSpaces } from "../utils/storageUtils";
 import {
+  getAvailabilityPercentage,
   getStatus,
-  getOccupancyPercentage
+  getOccupancyPercentage,
+  getOccupiedSeats
 } from "../utils/statusUtils";
 
 function SpaceDetail() {
 
   const { id } = useParams();
+  const location = useLocation();
   const spaces = getSpaces();
 
   const space =
@@ -29,6 +36,18 @@ function SpaceDetail() {
       space.availableSeats
     );
 
+  const availability =
+    getAvailabilityPercentage(
+      space.totalSeats,
+      space.availableSeats
+    );
+
+  const occupiedSeats =
+    getOccupiedSeats(
+      space.totalSeats,
+      space.availableSeats
+    );
+
   const status =
     getStatus(
       space.totalSeats,
@@ -42,7 +61,7 @@ function SpaceDetail() {
       <div className="flex gap-3 mb-6">
 
         <Link
-          to="/results"
+          to={`/results${location.search}`}
           className="
             px-4
             py-2
@@ -103,7 +122,7 @@ function SpaceDetail() {
         </p>
 
         <p>
-          Occupancy: {occupancy}%
+          Total Seats: {space.totalSeats}
         </p>
 
         <p>
@@ -112,6 +131,22 @@ function SpaceDetail() {
           {space.availableSeats}
           {" / "}
           {space.totalSeats}
+        </p>
+
+        <p>
+          Available Seats Percentage: {availability}%
+        </p>
+
+        <p>
+          Occupied Seats:
+          {" "}
+          {occupiedSeats}
+          {" / "}
+          {space.totalSeats}
+        </p>
+
+        <p>
+          Occupancy: {occupancy}%
         </p>
 
         <p>
@@ -161,6 +196,74 @@ function SpaceDetail() {
             }}
             title={space.zone}
           />
+
+          <div
+            className="
+              absolute
+              top-[12%]
+              right-[5%]
+              flex
+              items-center
+              gap-2
+            "
+          >
+
+            <span
+              className="
+                w-6
+                h-6
+                rounded-full
+                bg-gray-800
+                border-2
+                border-white
+                shadow
+              "
+            ></span>
+
+            <span
+              className="
+                bg-gray-800
+                text-white
+                text-xs
+                px-2
+                py-1
+                rounded
+                whitespace-nowrap
+              "
+            >
+              Library Entrance
+            </span>
+
+          </div>
+
+        </div>
+
+        <div className="mt-4 rounded-xl bg-gray-50 p-4 text-sm">
+
+          <h3 className="font-bold mb-2">
+            Map Guide
+          </h3>
+
+          <p>
+            <span className="text-green-600 font-semibold">
+              Green
+            </span>
+            {" = Available, "}
+            <span className="text-yellow-600 font-semibold">
+              Yellow
+            </span>
+            {" = Busy, "}
+            <span className="text-red-600 font-semibold">
+              Red
+            </span>
+            {" = Nearly Full"}
+          </p>
+
+          <p className="mt-1">
+            The colored marker indicates the selected location:
+            {" "}
+            {space.zone}.
+          </p>
 
         </div>
 

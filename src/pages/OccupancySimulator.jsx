@@ -8,6 +8,7 @@ import {
 } from "../utils/storageUtils";
 
 import {
+  getAvailabilityPercentage,
   getOccupancyPercentage
 } from "../utils/statusUtils";
 
@@ -150,8 +151,9 @@ function OccupancySimulator() {
               This tool simulates occupancy updates and
               is not connected to any actual library system.
               Changes are stored locally in the current browser
-              using local storage and will persist only on
-              this device unless the browser data is cleared.
+              and current device only. Changes are not
+              synchronized across users, devices or browsers,
+              and will be cleared if the browser data is cleared.
             </p>
 
           </div>
@@ -165,6 +167,12 @@ function OccupancySimulator() {
 
               const occupancy =
                 getOccupancyPercentage(
+                  space.totalSeats,
+                  space.availableSeats
+                );
+
+              const availability =
+                getAvailabilityPercentage(
                   space.totalSeats,
                   space.availableSeats
                 );
@@ -199,8 +207,14 @@ function OccupancySimulator() {
                     {space.totalSeats}
                   </p>
 
+                  <p className="text-gray-600">
+                    Available Seats Percentage:
+                    {" "}
+                    {availability}%
+                  </p>
+
                   <p className="text-gray-600 mb-4">
-                    Current Occupancy:
+                    Occupancy:
                     {" "}
                     {occupancy}%
                   </p>

@@ -16,6 +16,33 @@ export function getOccupancyPercentage(
 
 }
 
+export function getAvailabilityPercentage(
+  totalSeats,
+  availableSeats
+) {
+
+  if (totalSeats <= 0) {
+    return 0;
+  }
+
+  return Math.round(
+    (availableSeats / totalSeats) * 100
+  );
+
+}
+
+export function getOccupiedSeats(
+  totalSeats,
+  availableSeats
+) {
+
+  return Math.max(
+    0,
+    totalSeats - availableSeats
+  );
+
+}
+
 export function getStatus(
   totalSeats,
   availableSeats
