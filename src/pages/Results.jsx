@@ -4,8 +4,10 @@ import {
   useNavigate
 } from "react-router-dom";
 
-import { getSpaces }
-  from "../utils/storageUtils";
+import {
+  getSpaces,
+  getLastUpdated
+} from "../utils/storageUtils";
 
 import FilterBar from "../components/FilterBar";
 import SpaceCard from "../components/SpaceCard";
@@ -22,6 +24,9 @@ function Results() {
 
   const spaces =
     getSpaces();
+
+  const lastUpdated =
+    getLastUpdated();
 
   const [searchParams, setSearchParams] =
     useSearchParams();
@@ -174,9 +179,22 @@ function Results() {
           Find Library Spaces
         </h1>
 
-        <p className="text-gray-600 mb-6">
+        <p className="text-gray-600 mb-2">
           Discover study spaces that match
           your purpose and requirements.
+        </p>
+
+        <p className="text-gray-500 mb-6">
+
+          Last Updated:
+
+          {" "}
+
+          {
+            lastUpdated ||
+            "Not Available"
+          }
+
         </p>
 
         {
