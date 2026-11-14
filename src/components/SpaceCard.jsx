@@ -2,11 +2,11 @@ import {
   useLocation,
   useNavigate
 } from "react-router-dom";
+
 import AvailabilityBadge from "./AvailabilityBadge";
+
 import {
-  getAvailabilityPercentage,
-  getOccupancyPercentage,
-  getOccupiedSeats
+  getAvailabilityPercentage
 } from "../utils/statusUtils";
 
 function SpaceCard({ space }) {
@@ -14,20 +14,8 @@ function SpaceCard({ space }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const occupancy =
-    getOccupancyPercentage(
-      space.totalSeats,
-      space.availableSeats
-    );
-
   const availability =
     getAvailabilityPercentage(
-      space.totalSeats,
-      space.availableSeats
-    );
-
-  const occupiedSeats =
-    getOccupiedSeats(
       space.totalSeats,
       space.availableSeats
     );
@@ -62,23 +50,17 @@ function SpaceCard({ space }) {
       </p>
 
       <p>
-        Available Seats: {space.availableSeats}
+        Available Seats:
+        {" "}
+        {space.availableSeats}
         {" / "}
         {space.totalSeats}
       </p>
 
       <p>
-        Available Seats Percentage: {availability}%
-      </p>
-
-      <p>
-        Occupied Seats: {occupiedSeats}
-        {" / "}
-        {space.totalSeats}
-      </p>
-
-      <p>
-        Occupancy: {occupancy}%
+        Available Seats Percentage:
+        {" "}
+        {availability}%
       </p>
 
       <p>
