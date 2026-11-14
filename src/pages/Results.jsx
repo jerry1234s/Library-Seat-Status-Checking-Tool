@@ -67,7 +67,8 @@ function Results() {
 
     if (
       selectedTypes.length > 0 &&
-      selectedTypes.length < ALL_TYPES.length
+      selectedTypes.length <
+      ALL_TYPES.length
     ) {
 
       updatedParams.set(
@@ -107,7 +108,9 @@ function Results() {
 
       setSearchParams(
         updatedParams,
-        { replace: true }
+        {
+          replace: true
+        }
       );
 
     }
@@ -149,9 +152,30 @@ function Results() {
   ) {
 
     sortedSpaces.sort(
-      (a, b) =>
-        b.availableSeats -
-        a.availableSeats
+      (a, b) => {
+
+        const seatDiff =
+          b.availableSeats -
+          a.availableSeats;
+
+        if (seatDiff !== 0) {
+          return seatDiff;
+        }
+
+        const aPercentage =
+          a.availableSeats /
+          a.totalSeats;
+
+        const bPercentage =
+          b.availableSeats /
+          b.totalSeats;
+
+        return (
+          bPercentage -
+          aPercentage
+        );
+
+      }
     );
 
   }
@@ -162,9 +186,30 @@ function Results() {
   ) {
 
     sortedSpaces.sort(
-      (a, b) =>
-        a.availableSeats -
-        b.availableSeats
+      (a, b) => {
+
+        const seatDiff =
+          a.availableSeats -
+          b.availableSeats;
+
+        if (seatDiff !== 0) {
+          return seatDiff;
+        }
+
+        const aPercentage =
+          a.availableSeats /
+          a.totalSeats;
+
+        const bPercentage =
+          b.availableSeats /
+          b.totalSeats;
+
+        return (
+          aPercentage -
+          bPercentage
+        );
+
+      }
     );
 
   }
@@ -320,7 +365,7 @@ function Results() {
         </div>
 
         {
-          filteredSpaces.length === 0 && (
+          sortedSpaces.length === 0 && (
 
             <div
               className="
