@@ -51,6 +51,20 @@ function SpaceDetail() {
       <div className="flex gap-3 mb-6">
 
         <Link
+          to="/"
+          className="
+            px-4
+            py-2
+            bg-gray-700
+            text-white
+            rounded-lg
+            hover:bg-gray-800
+          "
+        >
+          Home
+        </Link>
+
+        <Link
           to={`/results${location.search}`}
           className="
             px-4
@@ -151,6 +165,42 @@ function SpaceDetail() {
           Location on Library Map
         </h2>
 
+        <div className="mb-4 rounded-xl bg-gray-50 p-4 text-sm">
+
+          <h3 className="font-bold mb-2">
+            Map Guide
+          </h3>
+
+          <p>
+            <span className="text-green-600 font-semibold">
+              Green
+            </span>
+            {" = Available (<60% occupied)"}
+          </p>
+
+          <p>
+            <span className="text-yellow-600 font-semibold">
+              Yellow
+            </span>
+            {" = Busy (60%-79% occupied)"}
+          </p>
+
+          <p>
+            <span className="text-red-600 font-semibold">
+              Red
+            </span>
+            {" = Nearly Full (≥80% occupied)"}
+          </p>
+
+          <p className="mt-2">
+            The colored marker shows the location
+            and availability status of the selected space:
+            {" "}
+            {space.zone}.
+          </p>
+
+        </div>
+
         <div className="relative">
 
           <img
@@ -215,36 +265,6 @@ function SpaceDetail() {
             </span>
 
           </div>
-
-        </div>
-
-        <div className="mt-4 rounded-xl bg-gray-50 p-4 text-sm">
-
-          <h3 className="font-bold mb-2">
-            Map Guide
-          </h3>
-
-          <p>
-            <span className="text-green-600 font-semibold">
-              Green
-            </span>
-            {" = Available, "}
-            <span className="text-yellow-600 font-semibold">
-              Yellow
-            </span>
-            {" = Busy, "}
-            <span className="text-red-600 font-semibold">
-              Red
-            </span>
-            {" = Nearly Full"}
-          </p>
-
-          <p className="mt-1">
-            The colored marker shows the location
-            and availability status of the selected space:
-            {" "}
-            {space.zone}.
-          </p>
 
         </div>
 
