@@ -68,8 +68,8 @@ function SpaceCard({ space }) {
         {" "}
         {
           space.power
-            ? "Available"
-            : "Not Available"
+            ? "✅ Available"
+            : "❌ Not Available"
         }
       </p>
 
