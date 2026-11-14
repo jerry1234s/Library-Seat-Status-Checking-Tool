@@ -31,7 +31,7 @@ function Home() {
             "
             onClick={() =>
               navigate(
-                "/results?type=Individual%20Study"
+                "/results?types=Individual Study"
               )
             }
           >
@@ -48,7 +48,7 @@ function Home() {
             "
             onClick={() =>
               navigate(
-                "/results?type=Group%20Discussion"
+                "/results?types=Group Discussion"
               )
             }
           >
@@ -65,7 +65,7 @@ function Home() {
             "
             onClick={() =>
               navigate(
-                "/results?type=Relaxation"
+                "/results?types=Relaxation"
               )
             }
           >
