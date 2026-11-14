@@ -51,6 +51,13 @@ function Results() {
     setPowerOnly
   ] = useState(initialPower);
 
+  const [
+    sortBy,
+    setSortBy
+  ] = useState(
+    "availability-desc"
+  );
+
   useEffect(() => {
 
     const updatedParams =
@@ -132,6 +139,58 @@ function Results() {
 
       }
     );
+
+  const sortedSpaces =
+    [...filteredSpaces];
+
+  if (
+    sortBy ===
+    "availability-desc"
+  ) {
+
+    sortedSpaces.sort(
+      (a, b) =>
+        b.availableSeats -
+        a.availableSeats
+    );
+
+  }
+
+  if (
+    sortBy ===
+    "availability-asc"
+  ) {
+
+    sortedSpaces.sort(
+      (a, b) =>
+        a.availableSeats -
+        b.availableSeats
+    );
+
+  }
+
+  if (
+    sortBy ===
+    "type"
+  ) {
+
+    const typeOrder = {
+
+      "Individual Study": 1,
+
+      "Group Discussion": 2,
+
+      "Relaxation": 3
+
+    };
+
+    sortedSpaces.sort(
+      (a, b) =>
+        typeOrder[a.type] -
+        typeOrder[b.type]
+    );
+
+  }
 
   return (
 
@@ -223,6 +282,43 @@ function Results() {
           setPowerOnly={setPowerOnly}
         />
 
+        <div className="mb-6">
+
+          <label className="font-medium mr-3">
+            Sort By
+          </label>
+
+          <select
+            value={sortBy}
+            onChange={(e) =>
+              setSortBy(
+                e.target.value
+              )
+            }
+            className="
+              border
+              rounded-lg
+              px-3
+              py-2
+            "
+          >
+
+            <option value="availability-desc">
+              Available Seats ↓
+            </option>
+
+            <option value="availability-asc">
+              Available Seats ↑
+            </option>
+
+            <option value="type">
+              Space Type
+            </option>
+
+          </select>
+
+        </div>
+
         {
           filteredSpaces.length === 0 && (
 
@@ -243,7 +339,7 @@ function Results() {
         <div className="grid gap-4">
 
           {
-            filteredSpaces.map(
+            sortedSpaces.map(
               (space) => (
 
                 <SpaceCard
