@@ -1,6 +1,6 @@
 export const LIBRARY_ENTRANCE = {
   label: "Library Entrance",
-  markerTop: "48%",
+  markerTop: "54%",
   markerLeft: "39%"
 };
 
