@@ -1,11 +1,38 @@
 function FilterBar({
-  selectedType,
-  setSelectedType,
+  selectedTypes,
+  setSelectedTypes,
   powerOnly,
-  setPowerOnly,
-  excludedType,
-  setExcludedType
+  setPowerOnly
 }) {
+
+  const spaceTypes = [
+    "Individual Study",
+    "Group Discussion",
+    "Relaxation"
+  ];
+
+  function handleTypeChange(
+    type,
+    checked
+  ) {
+
+    if (checked) {
+
+      setSelectedTypes([
+        ...selectedTypes,
+        type
+      ]);
+
+      return;
+    }
+
+    setSelectedTypes(
+      selectedTypes.filter(
+        (item) => item !== type
+      )
+    );
+
+  }
 
   return (
 
@@ -15,69 +42,72 @@ function FilterBar({
         Space Discovery & Filtering
       </h2>
 
-      <select
-        value={selectedType}
-        onChange={(e) => setSelectedType(e.target.value)}
-        className="border rounded-lg p-2 w-full mb-4"
-      >
+      <div className="mb-4">
 
-        <option value="">
-          All Space Types
-        </option>
+        <p className="font-medium mb-2">
+          Selected Space Types
+        </p>
 
-        <option value="Individual Study">
-          Individual Study
-        </option>
+        <div className="space-y-2">
 
-        <option value="Group Discussion">
-          Group Discussion
-        </option>
+          {
+            spaceTypes.map((type) => (
 
-        <option value="Relaxation">
-          Relaxation
-        </option>
+              <label
+                key={type}
+                className="
+                  flex
+                  items-center
+                  gap-2
+                "
+              >
 
-      </select>
+                <input
+                  type="checkbox"
+                  checked={
+                    selectedTypes.includes(
+                      type
+                    )
+                  }
+                  onChange={(e) =>
+                    handleTypeChange(
+                      type,
+                      e.target.checked
+                    )
+                  }
+                />
+
+                {type}
+
+              </label>
+
+            ))
+          }
+
+        </div>
+
+      </div>
 
       <label className="flex items-center gap-2">
 
         <input
           type="checkbox"
           checked={powerOnly}
-          onChange={(e) => setPowerOnly(e.target.checked)}
+          onChange={(e) =>
+            setPowerOnly(
+              e.target.checked
+            )
+          }
         />
 
         Need Power Outlet
 
       </label>
 
-      <select
-        value={excludedType}
-        onChange={(e) => setExcludedType(e.target.value)}
-        className="border rounded-lg p-2 w-full mt-4"
-      >
-
-        <option value="">
-          Do Not Exclude a Space Type
-        </option>
-
-        <option value="Individual Study">
-          Exclude Individual Study
-        </option>
-
-        <option value="Group Discussion">
-          Exclude Group Discussion
-        </option>
-
-        <option value="Relaxation">
-          Exclude Relaxation
-        </option>
-
-      </select>
-
     </div>
 
   );
+
 }
 
 export default FilterBar;
