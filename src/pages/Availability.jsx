@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { getSpaces } from "../utils/storageUtils";
 import {
+  getAvailabilityPercentage,
   getStatus,
-  getOccupancyPercentage
+  getOccupancyPercentage,
+  getOccupiedSeats
 } from "../utils/statusUtils";
 
 function Availability() {
@@ -72,6 +74,18 @@ function Availability() {
                     space.availableSeats
                   );
 
+                const availability =
+                  getAvailabilityPercentage(
+                    space.totalSeats,
+                    space.availableSeats
+                  );
+
+                const occupiedSeats =
+                  getOccupiedSeats(
+                    space.totalSeats,
+                    space.availableSeats
+                  );
+
                 return (
 
                   <div
@@ -116,9 +130,29 @@ function Availability() {
                     </p>
 
                     <p>
+                      Total Seats:
+                      {" "}
+                      {space.totalSeats}
+                    </p>
+
+                    <p>
                       Available Seats:
                       {" "}
                       {space.availableSeats}
+                      {" / "}
+                      {space.totalSeats}
+                    </p>
+
+                    <p>
+                      Available Seats Percentage:
+                      {" "}
+                      {availability}%
+                    </p>
+
+                    <p>
+                      Occupied Seats:
+                      {" "}
+                      {occupiedSeats}
                       {" / "}
                       {space.totalSeats}
                     </p>
@@ -174,6 +208,45 @@ function Availability() {
               alt="Library Floor Plan"
               className="rounded-xl w-full"
             />
+
+            <div
+              className="
+                absolute
+                top-[12%]
+                right-[5%]
+                flex
+                items-center
+                gap-2
+              "
+            >
+
+              <span
+                className="
+                  w-6
+                  h-6
+                  rounded-full
+                  bg-gray-800
+                  border-2
+                  border-white
+                  shadow
+                "
+              ></span>
+
+              <span
+                className="
+                  bg-gray-800
+                  text-white
+                  text-xs
+                  px-2
+                  py-1
+                  rounded
+                  whitespace-nowrap
+                "
+              >
+                Library Entrance
+              </span>
+
+            </div>
 
             {
               spaces.map((space) => {
