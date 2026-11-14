@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { getSpaces } from "../utils/storageUtils";
+
+import {
+  getSpaces,
+  getLastUpdated
+} from "../utils/storageUtils";
 
 import {
   LIBRARY_ENTRANCE,
@@ -14,7 +18,12 @@ import {
 function Availability() {
 
   const navigate = useNavigate();
-  const spaces = getSpaces();
+
+  const spaces =
+    getSpaces();
+
+  const lastUpdated =
+    getLastUpdated();
 
   return (
 
@@ -29,6 +38,19 @@ function Availability() {
         <p className="mt-2">
           Check space availability before travelling
           to the library.
+        </p>
+
+        <p className="mt-1 text-blue-100 text-sm">
+
+          Last Updated:
+
+          {" "}
+
+          {
+            lastUpdated ||
+            "Not Available"
+          }
+
         </p>
 
       </div>
@@ -207,7 +229,7 @@ function Availability() {
             </p>
 
             <p>
-              🪜 = Stair
+              📶 = Stair
             </p>
 
           </div>
