@@ -1,8 +1,15 @@
+import {
+  getLastUpdated
+} from "../utils/storageUtils";
+
 import { useNavigate } from "react-router-dom";
 
 function Home() {
 
   const navigate = useNavigate();
+
+  const lastUpdated =
+    getLastUpdated();
 
   return (
 
@@ -14,9 +21,22 @@ function Home() {
           CityU Library Space Finder
         </h1>
 
-        <p className="text-center text-gray-600 mb-10">
+        <p className="text-center text-gray-600 mb-2">
           View space availability, discover suitable study
           areas, and locate powered spaces before travelling.
+        </p>
+
+        <p className="text-center text-gray-500 mb-10">
+
+          Last Updated:
+
+          {" "}
+
+          {
+            lastUpdated ||
+            "Not Available"
+          }
+
         </p>
 
         <div className="grid md:grid-cols-2 gap-4">
