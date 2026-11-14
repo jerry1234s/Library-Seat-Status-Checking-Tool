@@ -20,91 +20,113 @@ function Results() {
   const [searchParams, setSearchParams] =
     useSearchParams();
 
-  const initialType =
-    searchParams.get("type") || "";
+  const allTypes = [
+    "Individual Study",
+    "Group Discussion",
+    "Relaxation"
+  ];
+
+  const initialTypes =
+    searchParams.get("types")
+      ? searchParams
+          .get("types")
+          .split(",")
+      : allTypes;
 
   const initialPower =
     searchParams.get("power") === "true";
 
-  const initialExcludedType =
-    searchParams.get("excludeType") || "";
+  const [
+    selectedTypes,
+    setSelectedTypes
+  ] = useState(initialTypes);
 
-  const [selectedType, setSelectedType] =
-    useState(initialType);
-
-  const [powerOnly, setPowerOnly] =
-    useState(initialPower);
-
-  const [excludedType, setExcludedType] =
-    useState(initialExcludedType);
+  const [
+    powerOnly,
+    setPowerOnly
+  ] = useState(initialPower);
 
   useEffect(() => {
 
     const updatedParams =
-      new URLSearchParams(searchParams);
+      new URLSearchParams(
+        searchParams
+      );
 
-    if (selectedType) {
-      updatedParams.set("type", selectedType);
+    if (
+      selectedTypes.length > 0 &&
+      selectedTypes.length < allTypes.length
+    ) {
+
+      updatedParams.set(
+        "types",
+        selectedTypes.join(",")
+      );
+
     }
     else {
-      updatedParams.delete("type");
+
+      updatedParams.delete(
+        "types"
+      );
+
     }
 
     if (powerOnly) {
-      updatedParams.set("power", "true");
-    }
-    else {
-      updatedParams.delete("power");
-    }
 
-    if (excludedType) {
-      updatedParams.set("excludeType", excludedType);
+      updatedParams.set(
+        "power",
+        "true"
+      );
+
     }
     else {
-      updatedParams.delete("excludeType");
+
+      updatedParams.delete(
+        "power"
+      );
+
     }
 
     if (
       updatedParams.toString() !==
       searchParams.toString()
     ) {
+
       setSearchParams(
         updatedParams,
         { replace: true }
       );
+
     }
 
   }, [
-    selectedType,
+    selectedTypes,
     powerOnly,
-    excludedType,
     searchParams,
     setSearchParams
   ]);
 
-  const filteredSpaces = spaces.filter(
-    (space) => {
+  const filteredSpaces =
+    spaces.filter(
+      (space) => {
 
-      const typeMatch =
-        selectedType === "" ||
-        space.type === selectedType;
+        const typeMatch =
+          selectedTypes.includes(
+            space.type
+          );
 
-      const powerMatch =
-        !powerOnly ||
-        space.power;
+        const powerMatch =
+          !powerOnly ||
+          space.power;
 
-      const excludedTypeMatch =
-        excludedType === "" ||
-        space.type !== excludedType;
+        return (
+          typeMatch &&
+          powerMatch
+        );
 
-      return (
-        typeMatch &&
-        powerMatch &&
-        excludedTypeMatch
-      );
-
-    }
-  );
+      }
+    );
 
   return (
 
@@ -115,7 +137,9 @@ function Results() {
         <div className="mb-6">
 
           <button
-            onClick={() => navigate("/")}
+            onClick={() =>
+              navigate("/")
+            }
             className="
               px-4
               py-2
@@ -140,25 +164,6 @@ function Results() {
         </p>
 
         {
-          selectedType && (
-
-            <div
-              className="
-                mb-4
-                bg-blue-100
-                text-blue-800
-                px-4
-                py-2
-                rounded-xl
-              "
-            >
-              Showing: {selectedType}
-            </div>
-
-          )
-        }
-
-        {
           powerOnly && (
 
             <div
@@ -177,32 +182,11 @@ function Results() {
           )
         }
 
-        {
-          excludedType && (
-
-            <div
-              className="
-                mb-4
-                bg-red-100
-                text-red-800
-                px-4
-                py-2
-                rounded-xl
-              "
-            >
-              Excluding: {excludedType}
-            </div>
-
-          )
-        }
-
         <FilterBar
-          selectedType={selectedType}
-          setSelectedType={setSelectedType}
+          selectedTypes={selectedTypes}
+          setSelectedTypes={setSelectedTypes}
           powerOnly={powerOnly}
           setPowerOnly={setPowerOnly}
-          excludedType={excludedType}
-          setExcludedType={setExcludedType}
         />
 
         {
