@@ -183,6 +183,16 @@ function SpaceDetail() {
           }
         </p>
 
+        <p className="text-sm text-gray-500 mt-1">
+
+          {
+            space.power
+              ? "This space provides power access."
+              : "This space does not provide power access."
+          }
+
+        </p>
+
       </div>
 
       <div className="mt-6 border rounded-2xl p-5">
